@@ -1,0 +1,36 @@
+table {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  font-family: 'Roboto', sans-serif;
+}
+#tableholder {
+  background-color: rgb(199, 197, 197);
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px;
+}
+#searchcontainer {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  height: 25px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+label {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+h2 {
+  text-align: center;
+  margin-top: 80px;
+}
