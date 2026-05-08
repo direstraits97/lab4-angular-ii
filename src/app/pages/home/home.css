@@ -1,8 +1,25 @@
 table {
-  display: flex;
-  justify-content: center;
   margin-top: 40px;
   font-family: 'Roboto', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 80%;
+}
+tr {
+  border-bottom: 1px solid black;
+}
+td {
+  padding: 0.7rem;
+}
+th {
+  padding: 0.7rem;
+  text-align: left;
+  text-decoration: underline;
+}
+th:hover {
+  cursor: pointer;
 }
 #tableholder {
   background-color: rgb(199, 197, 197);
@@ -20,10 +37,11 @@ table {
   flex-direction: column;
 }
 input {
-  height: 25px;
+  height: 30px;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+  font-size: 1rem;
 }
 label {
   width: 80%;
