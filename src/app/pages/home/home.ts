@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CourseService } from '../../services/course-service';
 import { FormsModule } from '@angular/forms';
+import { Course } from '../../interfaces/course';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 export class Home {
   courseService = inject(CourseService);
   courses = this.courseService.getCourses();
+  courseSearch: string = '';
+  filteredCourses: Course[] = [];
 
   sortByCode() {
     this.courses().sort((a, b) => {
@@ -55,5 +58,13 @@ export class Home {
         return 0;
       }
     });
+  }
+  sortBySearch() {
+    const filteredCourses = this.courses().filter(
+      (course) =>
+        course.coursename.toLowerCase().includes(this.courseSearch) ||
+        course.code.toLowerCase().includes(this.courseSearch),
+    );
+    this.filteredCourses = filteredCourses;
   }
 }

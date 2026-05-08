@@ -3,7 +3,14 @@
   <div id="tableholder">
     <div id="searchcontainer">
       <label for="search">Sök:</label>
-      <input type="text" id="search" name="search" placeholder="Sök efter kurskod eller kursnamn" />
+      <input
+        type="text"
+        id="search"
+        name="search"
+        placeholder="Sök efter kurskod eller kursnamn"
+        [(ngModel)]="courseSearch"
+        (input)="sortBySearch()"
+      />
     </div>
     <table>
       <thead>
@@ -14,12 +21,22 @@
         </tr>
       </thead>
       <tbody>
-        @for (course of courses(); track course.code) {
-          <tr>
-            <td>{{ course.code }}</td>
-            <td>{{ course.coursename }}</td>
-            <td>{{ course.progression }}</td>
-          </tr>
+        @if (courseSearch != '') {
+          @for (course of filteredCourses; track course.code) {
+            <tr>
+              <td>{{ course.code }}</td>
+              <td>{{ course.coursename }}</td>
+              <td>{{ course.progression }}</td>
+            </tr>
+          }
+        } @else {
+          @for (course of courses(); track course.code) {
+            <tr>
+              <td>{{ course.code }}</td>
+              <td>{{ course.coursename }}</td>
+              <td>{{ course.progression }}</td>
+            </tr>
+          }
         }
       </tbody>
     </table>
