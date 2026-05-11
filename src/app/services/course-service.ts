@@ -1,3 +1,7 @@
+/**
+ * Service som hanterar get-anrop för önskad data med HttpClient.
+ */
+
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, Signal } from '@angular/core';
 import { Course } from '../interfaces/course';
