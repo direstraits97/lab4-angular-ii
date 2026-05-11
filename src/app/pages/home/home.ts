@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { CourseService } from '../../services/course-service';
 import { FormsModule } from '@angular/forms';
 import { Course } from '../../interfaces/course';
@@ -15,8 +15,13 @@ export class Home {
   courseSearch: string = '';
   filteredCourses: Course[] = [];
 
+  constructor() {
+    effect(() => {
+      this.filteredCourses = this.courses();
+    });
+  }
   sortByCode() {
-    this.courses().sort((a, b) => {
+    this.filteredCourses.sort((a, b) => {
       let x = a.code.toLowerCase();
       let y = b.code.toLowerCase();
       if (x < y) {
@@ -29,9 +34,8 @@ export class Home {
       }
     });
   }
-
   sortByName() {
-    this.courses().sort((a, b) => {
+    this.filteredCourses.sort((a, b) => {
       let x = a.coursename.toLowerCase();
       let y = b.coursename.toLowerCase();
       if (x < y) {
@@ -46,7 +50,7 @@ export class Home {
   }
 
   sortByProgression() {
-    this.courses().sort((a, b) => {
+    this.filteredCourses.sort((a, b) => {
       let x = a.progression.toLowerCase();
       let y = b.progression.toLowerCase();
       if (x < y) {
@@ -59,7 +63,7 @@ export class Home {
       }
     });
   }
-  sortBySearch() {
+  filterBySearch() {
     const filteredCourses = this.courses().filter(
       (course) =>
         course.coursename.toLowerCase().includes(this.courseSearch) ||
