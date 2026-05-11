@@ -12,33 +12,35 @@
         (input)="filterBySearch()"
       />
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th (click)="sortByCode()">Kurskod</th>
-          <th (click)="sortByName()">Namn</th>
-          <th (click)="sortByProgression()">Progression</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if (courseSearch != '') {
-          @for (course of filteredCourses; track course.code) {
-            <tr>
-              <td>{{ course.code }}</td>
-              <td>{{ course.coursename }}</td>
-              <td>{{ course.progression }}</td>
-            </tr>
+    <div id="tablecontainer">
+      <table>
+        <thead>
+          <tr>
+            <th (click)="sortByCode()">Kurskod</th>
+            <th (click)="sortByName()">Namn</th>
+            <th (click)="sortByProgression()">Progression</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (courseSearch != '') {
+            @for (course of filteredCourses; track course.code) {
+              <tr>
+                <td>{{ course.code }}</td>
+                <td>{{ course.coursename }}</td>
+                <td>{{ course.progression }}</td>
+              </tr>
+            }
+          } @else {
+            @for (course of courses(); track course.code) {
+              <tr>
+                <td>{{ course.code }}</td>
+                <td>{{ course.coursename }}</td>
+                <td>{{ course.progression }}</td>
+              </tr>
+            }
           }
-        } @else {
-          @for (course of courses(); track course.code) {
-            <tr>
-              <td>{{ course.code }}</td>
-              <td>{{ course.coursename }}</td>
-              <td>{{ course.progression }}</td>
-            </tr>
-          }
-        }
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>

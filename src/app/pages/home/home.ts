@@ -20,7 +20,7 @@ export class Home {
       this.filteredCourses = this.courses();
     });
   }
-  sortByCode() {
+  sortByCode(): void {
     this.filteredCourses.sort((a, b) => {
       let x = a.code.toLowerCase();
       let y = b.code.toLowerCase();
@@ -34,7 +34,7 @@ export class Home {
       }
     });
   }
-  sortByName() {
+  sortByName(): void {
     this.filteredCourses.sort((a, b) => {
       let x = a.coursename.toLowerCase();
       let y = b.coursename.toLowerCase();
@@ -49,7 +49,7 @@ export class Home {
     });
   }
 
-  sortByProgression() {
+  sortByProgression(): void {
     this.filteredCourses.sort((a, b) => {
       let x = a.progression.toLowerCase();
       let y = b.progression.toLowerCase();
@@ -63,7 +63,7 @@ export class Home {
       }
     });
   }
-  filterBySearch() {
+  filterBySearch(): void {
     const filteredCourses = this.courses().filter(
       (course) =>
         course.coursename.toLowerCase().includes(this.courseSearch) ||

@@ -51,4 +51,34 @@ label {
 h2 {
   text-align: center;
   margin-top: 80px;
+  font-size: 2rem;
+}
+
+@media (max-width: 1024px) {
+  #tableholder {
+    width: 80%;
+  }
+  table {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  #tableholder {
+    width: 90%;
+    margin-top: 40px;
+  }
+  #tablecontainer {
+    overflow-x: auto;
+  }
+  input {
+    width: 90%;
+  }
+  label {
+    width: 90%;
+  }
+  h2 {
+    margin-top: 40px;
+    font-size: 1.5rem;
+  }
 }
