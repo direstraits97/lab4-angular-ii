@@ -1,1 +1,8 @@
 # Lab4 - Angular II
+## Länk till webbplats 
+https://joba1602angularii.netlify.app/
+## Om webbplatsen
+Denna webbplats listar de kurser som ingår i Mittuniversitetets program för webbutveckling. Innehållet kan filtreras med hjälp av en sökruta, och sortering är även möjlig utifrån kurskod, kursnamn och progression. 
+
+## Hur fungerar webbplatsen?
+Webbplatsen är byggd i Angular, och innehållet hämtas från en webbtjänst med ramverkets inbyggda HttpClient. En service har skapats som sköter anropet för det data som behövs, som sedan används i relevant komponent. För att representera det data som hämtas har även ett interface skapats. Innehållet på webbplatsen uppdateras dynamiskt med hjälp av databindning. Komponenten som manipulerar innehållet har en rad funktioner, och använder även en effect i konstruktorn. Effekten efterlyssnar förändringar från datat som hämtats (tom array som initialt värde), samt en tom array som fylls med det hämtade datat i syfte att kunna manipulera datat på önskat sätt vid sortering och filtrering. Datat som hämtas är en "read only"-signal, och kan till exempel inte användas med set eller update. Därför kopieras datan till en writable signal, där värden kan uppdateras som tänkt. Det finns tre utgångspunkter för sortering som triggas med klick i html-filen och visar manipulerad data. Filtreringen görs på det hämtade datat, och arrayen med manipulerad data uppdateras med resultatet. Detta presenteras sedan i html-filen med databindning som nämnts ovan. Ett input-fält lyssnar på förändring för att visa filtrerad data, och det manipulerade datat som lyssnar på förändringar loopas igenom i en tabell.
