@@ -9,8 +9,7 @@
         name="search"
         placeholder="Sök efter kurskod eller kursnamn"
         [(ngModel)]="courseSearch"
-        (input)="filterBySearch()"
-      />
+        (input)="filterBySearch()">
     </div>
     <div id="tablecontainer">
       <table>
@@ -22,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (course of filteredCourses(); track course.code) {
+          @for (course of manipulatedCourses(); track course.code) {
             <tr>
               <td>{{ course.code }}</td>
               <td>{{ course.coursename }}</td>

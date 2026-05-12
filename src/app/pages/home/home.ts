@@ -18,16 +18,16 @@ export class Home {
   private courseService = inject(CourseService);
   courses = this.courseService.getCourses();
   courseSearch: string = ''; //Sökrutan i html-filen.
-  filteredCourses = signal<Course[]>([]); //Här ska filtrerad data hamna.
+  manipulatedCourses = signal<Course[]>([]); //Här ska filtrerad data hamna.
 
   constructor() {
     effect(() => {
-      this.filteredCourses.update(() => this.courses()); //När datat har kommit in med get-anropet fylls filteredCourses-arrayen med det data som hämtats.
+      this.manipulatedCourses.update(() => this.courses()); //När datat har kommit in med get-anropet fylls manipulatedCourses-arrayen med det data som hämtats.
     });
   }
-  //Detta är en grundläggande formel för sortering där innehållet jämförs för att uppnå önskad struktur. För mindre redundans används denna funktion flera gånger med olika argument.
+  //Detta är en grundläggande formel för sortering där innehållet jämförs för att uppnå önskad struktur. För mindre redundans används denna funktion flera gånger med olika parametrar.
   private sortBy(sortKey: 'code' | 'coursename' | 'progression'): void {
-    this.filteredCourses().sort((a, b) => {
+    this.manipulatedCourses().sort((a, b) => {
       let x = a[sortKey].toLowerCase();
       let y = b[sortKey].toLowerCase();
       if (x < y) {
@@ -51,13 +51,13 @@ export class Home {
   sortByProgression(): void {
     this.sortBy('progression');
   }
-  //Nedan funktion filtrerar ut datat som matchar det som finns i sökrutan i html-filen. Arrayen filteredCourses uppdateras med matchande data.
+  //Nedan funktion filtrerar ut datat som matchar det som finns i sökrutan i html-filen. Arrayen manipulatedCourses uppdateras med matchande data.
   filterBySearch(): void {
     const filteredCourses = this.courses().filter(
       (course) =>
         course.coursename.toLowerCase().includes(this.courseSearch) ||
         course.code.toLowerCase().includes(this.courseSearch),
     );
-    this.filteredCourses.update(() => filteredCourses);
+    this.manipulatedCourses.update(() => filteredCourses);
   }
 }
