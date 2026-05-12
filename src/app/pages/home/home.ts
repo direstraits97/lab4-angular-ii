@@ -22,7 +22,7 @@ export class Home {
 
   constructor() {
     effect(() => {
-      this.manipulatedCourses.update(() => this.courses()); //När datat har kommit in med get-anropet fylls manipulatedCourses-arrayen med det data som hämtats.
+      this.manipulatedCourses.set(this.courses()); //När datat har kommit in med get-anropet fylls manipulatedCourses-arrayen med det data som hämtats. Varje förändring i signalerna avlyssnas.
     });
   }
   //Detta är en grundläggande formel för sortering där innehållet jämförs för att uppnå önskad struktur. För mindre redundans används denna funktion flera gånger med olika parametrar.
@@ -58,6 +58,6 @@ export class Home {
         course.coursename.toLowerCase().includes(this.courseSearch) ||
         course.code.toLowerCase().includes(this.courseSearch),
     );
-    this.manipulatedCourses.update(() => filteredCourses);
+    this.manipulatedCourses.set(filteredCourses);
   }
 }
